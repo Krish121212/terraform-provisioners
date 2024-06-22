@@ -5,7 +5,7 @@ resource "aws_instance" "db" {
   instance_type = "t2.micro"
 
 #provisioners will only run when you are creating resources 
-#they won't run once the resuorces are already created 
+#they won't run once the resources are already created 
 provisioner "local-exec" {
     command = "echo ${self.private_ip} > private_ips.txt"
   }
@@ -32,6 +32,4 @@ provisioner "remote-exec" {
       "sudo systemctl start nginx"
     ]
   } 
-}
-
 }
